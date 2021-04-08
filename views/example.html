@@ -1,0 +1,46 @@
+<% movieCoverClass = locals.large ? 'movie-cover-large' : '' %>
+<% movieGridClass = locals.large ? 'movie-grid-large' : '' %>
+<div class="content-grid__6">
+    <div class="grid-base">
+        <div class="card-content-frame">
+            <div class="card-thumb-frame">
+                <div class="img__wrapper ">
+                    <% movies.forEach(movie => { %>
+                    <a class="lob__link lob--default " href="/movies/<%= movie.id %>">
+                        <img class="movie-cover" src="<%= movie.coverImagePath %>">
+                    </a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <% movies.forEach(movie => { %>
+            <a href="/movies/<%= movie.id %>">
+                <img src="<%= movie.coverImagePath %>" alt="" style="width:180px;height:270px;">
+            </a>
+        </div>
+        <div class="flip-card-back">
+            <h1><%= movie.title %></h1>
+            <p><%= movie.publishDate.toDateString() %></p>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+
+<% bookCoverClass = locals.large ? 'book-cover-large' : '' %>
+<% bookGridClass = locals.large ? 'book-grid-large' : '' %>
+<div class="book-grid <%= bookGridClass %>">
+    <% books.forEach(book => { %>
+    <a href="/books/<%= book.id %>">
+        <img class="book-cover <%= bookCoverClass %>" src="<%= book.coverImagePath %>">
+    </a>
+    <% }) %>
+</div>

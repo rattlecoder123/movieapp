@@ -1,0 +1,23 @@
+<iframe width="1200" height="720" src="<%= movie.movieLink %>" title="video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+<h2 class="page-header"><%= movie.title %></h2>
+<div class="movie-details">
+    <div>
+        <img class="movie-cover" src="<%= movie.coverImagePath %>">
+        <div class="movie-details-btn-grid">
+            <a class="btn btn-primary" href="/movies/<%= movie.id %>/edit"><i class="fas fa-pen-square"></i></a>
+            <%- include('../partials/deleteForm', { url: `/movies/${movie.id}` }) %>
+            <a class="btn btn-primary" href="/directors/<%= movie.director.id %>"><i
+                        class="fas fa-chalkboard-teacher"></i></a>
+        </div>
+    </div>
+    <div class="movie-details-grid">
+        <div class="movie-details-label">Director:</div>
+        <div><%= movie.director.name %></div>
+        <div class="movie-details-label">Release Date:</div>
+        <div><%= movie.publishDate.toDateString() %></div>
+        <div class="movie-details-label">Description:</div>
+        <div><%= movie.description %></div>
+    </div>
+</div>
